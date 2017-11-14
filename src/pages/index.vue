@@ -1,39 +1,51 @@
 <template>
     <Page>
+        <!--content-->
         <Header>
-            <Navbar hideBackButton>
-                <Title :title="$t('index.title')"></Title>
+            <!--menutoggle-->
+            <Navbar hide-back-button>
+                <!--menutoggle-->
+                <Buttons right slot="buttons">
+                    <Button @click="$menus.toggle('menu')" role="bar-button" menutoggle>
+                        <!--<Icon name="more"></Icon>-->
+                        <span>菜单</span>
+                    </Button>
+                </Buttons>
+                <Title @onTitleClick="onTitleClickHandler" :title="$t('index.title')"></Title>
             </Navbar>
         </Header>
         <Content padding>
             <article class="index scrollContent">
-                <section padding class="vimo">
-                    <section class="vimo__logo">
-                        <section text-center no-padding>
+                <Grid class="vimo">
+                    <Row class="vimo__logo">
+                        <Column text-center no-padding>
                             <div class="vimo__logo--img">
-                                <img height="120" src="../assets/vimo.png">
+                                <img src="../assets/vimo.png">
                             </div>
-                        </section>
-                    </section>
-                    <section class="vimo__text">
-                        <section text-center>
+                        </Column>
+                    </Row>
+                    <Row class="vimo__text">
+                        <Column text-center>
                             <h1>VIMO</h1>
-                            <p>v{{version}}</p>
+                            <p>v{{vimo.version}}</p>
                             <p class="message">{{$t('index.message')}}</p>
-                        </section>
-                    </section>
-                    <section class="vimo__btns">
-                        <Button block solid @click="$router.push({name:'introduction'})">
-                            {{$t('index.introduction')}}
-                        </Button>
-                        <Button block solid @click="$router.push({name:'components'})">
+                            <a class="star" href="#"><img
+                                    src="https://img.shields.io/github/stars/vm-component/vimo.svg?style=social&label=Star"
+                                    alt="Star"></a>
+                            <a class="star" href="#"><img
+                                    src="https://img.shields.io/github/forks/vm-component/vimo.svg?style=social&label=Fork"
+                                    alt="Fork"></a>
+                        </Column>
+                    </Row>
+                    <Row class="vimo__btns">
+                        <Button block solid @click="$router.push({'name':'components','meta':{newWindow:true}})">
                             {{$t('index.component')}}
                         </Button>
-                        <Button block solid @click="switchLanguage">
-                            {{$t('index.switchLanguage')}}({{$i18n.locale.toUpperCase()}})
+                        <Button block solid @click="$menus.open('menu')">
+                            {{$t('index.menu')}}
                         </Button>
-                    </section>
-                </section>
+                    </Row>
+                </Grid>
             </article>
         </Content>
         <Footer class="index inspired">
@@ -49,25 +61,6 @@
         </Footer>
     </Page>
 </template>
-<script type="text/javascript">
-  export default {
-    name: 'Index',
-    data () {
-      return {
-        version: window.VM.version
-      }
-    },
-    methods: {
-      switchLanguage () {
-        if (this.$i18n.locale !== 'cn') {
-          this.$i18n.locale = 'cn'
-        } else {
-          this.$i18n.locale = 'en'
-        }
-      }
-    }
-  }
-</script>
 <style scoped lang="less">
     .index.scrollContent {
         width: 100%;
@@ -80,12 +73,15 @@
             justify-content: center;
             align-content: center;
             flex-direction: column;
-            padding-bottom: 55px;
-            width: 100%;
-
+            /*padding-bottom: 45px;*/
             .vimo__logo {
+                flex: 110px 0 0; /*no*/
                 .vimo__logo--img {
-                    height: 120px;
+                    height: 110px; /*no*/
+                    flex: 110px 0 0; /*no*/
+                    img {
+                        height: 100%;
+                    }
                 }
             }
             .vimo__text {
@@ -115,11 +111,10 @@
     .index.inspired {
         width: 100%;
         height: 55px;
-        position: absolute;
         bottom: 0;
         border-top: 1px solid #eee;
         text-align: center;
-        background: rgba(256, 256, 256, 0.7);
+        background: #fff;
         .inspired__name {
             font-size: 14px;
             line-height: 120%;
@@ -163,4 +158,20 @@
         }
     }
 </style>
-
+<script type="text/javascript">
+  export default {
+    name: 'IndexDemo',
+    data () {
+      return {
+        vimo: window.VM
+      }
+    },
+    methods: {
+      onTitleClickHandler () {
+        alert('你点击了标题')
+      }
+    },
+    created () {},
+    mounted () {}
+  }
+</script>

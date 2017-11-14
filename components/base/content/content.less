@@ -1,0 +1,110 @@
+@import "../../themes/index.less";
+@import "../../themes/default.less";
+@import "../../themes/default.ios.less";
+@import "../../themes/default.md.less";
+
+// Content
+// --------------------------------------------------
+
+.ion-content {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+
+  width: 100%;
+
+  contain: layout style;
+
+  color: @text-color;
+  background-color: @background-color;
+}
+
+//.ion-page > .ion-content {
+//  position: absolute;
+//}
+
+// Scrollable Content
+// --------------------------------------------------
+
+.scroll-content {
+  position: relative;
+  //top: 1px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @z-index-scroll-content;
+  display: block;
+
+  -webkit-overflow-scrolling: touch;
+  will-change: scroll-position;
+
+  contain: style layout;
+}
+
+.disable-scroll .ion-page,
+.disable-scroll .ion-page .ion-content,
+.disable-scroll .ion-page .ion-content .fixed-content,
+.disable-scroll .ion-page .ion-content .scroll-content {
+  pointer-events: none;
+  touch-action: none;
+}
+
+// Fixed Content (fixed and fab)
+// --------------------------------------------------
+
+.fixed-content {
+  position: relative !important;
+  z-index: auto !important;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+.fixed-content [fixed],
+.fixed-content [fixedtop],
+.fixed-content [fixedbottom] {
+  position: fixed;
+  z-index: @z-index-fixed-content;
+  transform: translateZ(0);
+}
+
+.fixed-content [fixedtop],
+.fixed-content [fixedbottom] {
+  width: 100%;
+}
+
+// fixed Position
+.fixed-content [fixedTop] {
+  top: 0;
+}
+
+.fixed-content [fixedBottom] {
+  bottom: 0;
+}
+
+// Content
+// --------------------------------------------------
+
+// outer-content是用户自定义类, 不是由组件自己添加的
+.ion-content.outer-content {
+  background: @content-outer-background;
+}
+
+.ios {
+  .ion-content.outer-content {
+    background: @content-ios-outer-background;
+  }
+}
+
+.md {
+  .ion-content.outer-content {
+    background: @content-md-outer-background;
+  }
+}
+
+.ion-content hr {
+  height: @hairlines-width;
+  background-color: rgba(0, 0, 0, .12);
+}

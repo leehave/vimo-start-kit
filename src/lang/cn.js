@@ -14,9 +14,9 @@ export default {
   },
   index: {
     title: '欢迎',
-    introduction: '简介',
+    switchLang: '切换语言',
     message: '基于Vue2.x的移动端Hybrid框架',
     component: '组件',
-    switchLanguage: '切换语言'
+    menu: '打开菜单'
   }
 }

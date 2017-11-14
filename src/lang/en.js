@@ -14,9 +14,9 @@ export default {
   },
   index: {
     title: 'Welcome',
-    introduction: 'Introduction',
+    switchLang: 'Switch Language',
     message: 'Based on Vue2.x && A Platform For Hybrid App',
-    component: 'Component',
-    switchLanguage: 'Switch Language'
+    component: 'COMPONENT',
+    menu: 'OPEN MENU'
   }
 }

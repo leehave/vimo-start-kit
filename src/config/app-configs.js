@@ -5,40 +5,21 @@
  *
  * 包括domain/url/AK/ssecretID等
  *
- * 主要存放合成变量
  */
 export default {
+  pageTransition: '',
+  recordPosition: false,
+  showIndicatorWhenPageChange: false, // 转场是否提前添加动画
   platforms: {
-    ios: {
-      settings: {
-        pageTransition: 'fade-right-transition'
-      }
-    },
-    android: {
-      settings: {
-        pageTransition: 'zoom-transition'
-      }
-    },
-    wechat: {
-      settings: {
-        hideNavBar: true
-      }
-    },
-    alipay: {
-      settings: {
-        hideNavBar: true
-      }
-    },
-    dingtalk: {
-      settings: {
-        hideNavBar: true
-      }
-    },
-    qq: {
-      settings: {
-        hideNavBar: true
-      }
-    }
+    // mobile: {
+    //   recordPosition: false
+    // },
+    // ios: {
+    //   pageTransition: 'fade-right-transition'
+    // },
+    // android: {
+    //   pageTransition: 'zoom-transition'
+    // }
   },
-  domain: 'http://localhost:3000'
+  domain: ''
 }
